@@ -1,48 +1,49 @@
 package com.ravi.cal.RaviCalculator;
+import java.util.Scanner;
 
 public class Calculator {
-
-	public long first;
-	public long second;
-	
-	public Calculator(long first, long second){
-		this.first = first;
-		this.second=second;
-	}
-	
-	public long getFirst() {
-		return first;
-	}
-
-	public long getSecond() {
-		return second;
-	}
-
-	public long addFucn(long first, long second){
-		
-		return first+second;
-	}
-	
-	public long subFucn(long first, long second){
-		
-		return second-first;
-	}
-	
-	public long mulFucn(long first, long second){
-		
-		return first.second;
-	}
-	
-	
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 
-		long first = Long.parseLong(args[0]);
-		long second = Long.parseLong(args[1]);
-		
-		Calculator cal = new Calculator(first, second);
-		
-		String output = String.format("\n*** Your Results ***\n\nFirst: %d\nSecond: %d\n\nSum : %d\nDifference : %d\nProduct : %d\n\n", cal.first, cal.second, cal.addFucn(first, second), cal.subFucn(first, second), cal.mulFucn(first, second));
-	    System.out.println(output);
+		System.out.println("Simple Calculator");
+		System.out.println("Enter first number:");
+		double num1 = scanner.nextDouble();
+
+		System.out.println("Enter second number:");
+		double num2 = scanner.nextDouble();
+
+		System.out.println("Select operation (+, -, *, /):");
+		char operator = scanner.next().charAt(0);
+
+		double result = 0;
+
+		switch (operator) {
+			case '+':
+				result = num1 + num2;
+				break;
+			case '-':
+				result = num1 - num2;
+				break;
+			case '*':
+				result = num1 * num2;
+				break;
+			case '/':
+				if (num2 != 0) {
+					result = num1 / num2;
+				} else {
+					System.out.println("Error: Division by zero is not allowed.");
+					return;
+				}
+				break;
+			default:
+				System.out.println("Invalid operator. Please enter +, -, *, or /");
+				return;
+		}
+
+		System.out.println("Result: " + result);
+
+		scanner.close();
 	}
-	
 }
+
+
